@@ -1,0 +1,117 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.register-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: var(--background);
+}
+
+.register-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+}
+
+mat-card-header {
+  padding: 32px 32px 16px;
+}
+
+mat-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+mat-card-subtitle {
+  margin-top: 8px;
+  color: var(--text-secondary);
+}
+
+mat-card-content {
+  padding: 24px 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-checkbox {
+  margin-top: -8px;
+}
+
+.register-button {
+  height: 48px;
+  margin-top: 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .register-button mat-spinner {
+    margin: auto;
+  }
+
+.validation-error {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: -10px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 20px 32px 28px;
+}
+
+  mat-card-actions a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity .2s ease;
+  }
+
+    mat-card-actions a:hover {
+      opacity: .8;
+    }
+
+@media (max-width: 600px) {
+
+  .register-page {
+    padding: 16px;
+  }
+
+  .register-card {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  mat-card-header,
+  mat-card-content,
+  mat-card-actions {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  mat-card-title {
+    font-size: 1.75rem;
+  }
+}

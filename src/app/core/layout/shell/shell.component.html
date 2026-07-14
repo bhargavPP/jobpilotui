@@ -1,0 +1,28 @@
+<mat-sidenav-container class="shell-container">
+
+  <mat-sidenav #sidenav
+               class="app-sidenav"
+               [mode]="sidenavMode()"
+               [opened]="sidenavOpened()"
+               [fixedInViewport]="mobile()"
+               [fixedTopGap]="64">
+
+    <app-sidebar (navigate)="closeSidebar()">
+    </app-sidebar>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <app-header (menuClick)="toggleSidebar()">
+    </app-header>
+
+    <main class="shell-content">
+
+      <router-outlet />
+
+    </main>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

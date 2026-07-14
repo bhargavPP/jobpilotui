@@ -1,0 +1,88 @@
+<mat-toolbar class="app-toolbar">
+
+  <!-- Mobile Menu -->
+
+  <button mat-icon-button
+          type="button"
+          class="menu-button"
+          (click)="openMenu()"
+          aria-label="Open navigation menu">
+
+    <mat-icon>menu</mat-icon>
+
+  </button>
+
+  <!-- Logo -->
+
+  <div class="brand">
+
+    <div class="brand-logo">
+
+      JP
+
+    </div>
+
+    <div class="brand-text">
+
+      <div class="title">
+        JobPilot
+      </div>
+
+      <div class="subtitle">
+        AI Resume Assistant
+      </div>
+
+    </div>
+
+  </div>
+
+  <span class="toolbar-spacer"></span>
+
+  <!-- User Menu -->
+
+  <button mat-icon-button
+          [matMenuTriggerFor]="userMenu"
+          aria-label="Open user menu">
+
+    <mat-icon>
+      account_circle
+    </mat-icon>
+
+  </button>
+
+  <mat-menu #userMenu="matMenu">
+
+    <button mat-menu-item>
+
+      <mat-icon>person</mat-icon>
+
+      <span>Profile</span>
+
+    </button>
+
+    <button mat-menu-item>
+
+      <mat-icon>settings</mat-icon>
+
+      <span>Settings</span>
+
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item
+            (click)="logout()">
+
+      <mat-icon>
+        logout
+      </mat-icon>
+
+      <span>
+        Logout
+      </span>
+
+    </button>
+
+  </mat-menu>
+
+</mat-toolbar>

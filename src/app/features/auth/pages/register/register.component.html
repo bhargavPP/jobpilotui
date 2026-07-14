@@ -1,0 +1,180 @@
+<div class="register-page">
+
+  <mat-card class="register-card">
+
+    <mat-card-header>
+
+      <mat-card-title>
+        Create your account
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Start tailoring your resume with JobPilot
+      </mat-card-subtitle>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <form [formGroup]="form"
+            (ngSubmit)="register()"
+            novalidate>
+
+        <!-- Email -->
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Email</mat-label>
+
+          <mat-icon matPrefix>mail</mat-icon>
+
+          <input matInput
+                 type="email"
+                 autocomplete="email"
+                 formControlName="email">
+
+          @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+          <mat-error>Email is required.</mat-error>
+          }
+
+          @if (form.controls.email.touched && form.controls.email.hasError('email')) {
+          <mat-error>Please enter a valid email address.</mat-error>
+          }
+
+        </mat-form-field>
+
+        <!-- Password -->
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Password</mat-label>
+
+          <input matInput
+                 autocomplete="new-password"
+                 formControlName="password"
+                 [type]="hidePassword() ? 'password' : 'text'">
+
+          <button mat-icon-button
+                  matSuffix
+                  type="button"
+                  (click)="togglePassword()">
+
+            <mat-icon>
+              {{ hidePassword() ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+
+          </button>
+
+          @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+          <mat-error>Password is required.</mat-error>
+          }
+
+          @if (form.controls.password.touched && form.controls.password.hasError('minlength')) {
+          <mat-error>Password must be at least 8 characters.</mat-error>
+          }
+
+        </mat-form-field>
+
+        <!-- Confirm Password -->
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Confirm Password</mat-label>
+
+          <input matInput
+                 autocomplete="new-password"
+                 formControlName="confirmPassword"
+                 [type]="hideConfirmPassword() ? 'password' : 'text'">
+
+          <button mat-icon-button
+                  matSuffix
+                  type="button"
+                  (click)="toggleConfirmPassword()">
+
+            <mat-icon>
+              {{ hideConfirmPassword() ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+
+          </button>
+
+          @if (form.controls.confirmPassword.touched &&
+          form.controls.confirmPassword.hasError('required')) {
+
+          <mat-error>
+            Please confirm your password.
+          </mat-error>
+
+          }
+
+        </mat-form-field>
+
+        <!-- Password mismatch -->
+        @if (form.errors?.['passwordMismatch']
+        && form.controls.confirmPassword.touched) {
+
+        <div class="validation-error">
+          Passwords do not match.
+        </div>
+
+        }
+
+        <!-- Terms -->
+
+        <mat-checkbox formControlName="acceptTerms">
+          I agree to the Terms of Service and Privacy Policy
+        </mat-checkbox>
+
+        @if (form.controls.acceptTerms.touched &&
+        form.controls.acceptTerms.hasError('required')) {
+
+        <div class="validation-error">
+          You must accept the terms to continue.
+        </div>
+
+        }
+
+        <!-- Register -->
+
+        <button mat-flat-button
+                color="primary"
+                class="register-button"
+                type="submit"
+                [disabled]="loading()">
+
+          @if (!loading()) {
+
+          <span>Create Account</span>
+
+          }
+
+          @if (loading()) {
+
+          <mat-spinner diameter="22"></mat-spinner>
+
+          }
+
+        </button>
+
+      </form>
+
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions>
+
+      <span>
+        Already have an account?
+      </span>
+
+      <a routerLink="/auth/login">
+
+        Sign In
+
+      </a>
+
+    </mat-card-actions>
+
+  </mat-card>
+
+</div>

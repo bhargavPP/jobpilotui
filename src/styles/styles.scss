@@ -1,0 +1,20 @@
+@use "abstracts/variables";
+@use "base/reset";
+@use "base/typography";
+@use "layout/container";
+@use "utilities/spacing";
+@use "utilities/display";
+@use "themes/light";
+@use "themes/dark";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+}
