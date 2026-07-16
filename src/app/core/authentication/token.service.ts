@@ -15,6 +15,7 @@ export class TokenService {
    * Save JWT token.
    */
   setToken(token: string): void {
+    console.log('Saving token:', token);
     this.storage.set(StorageKeys.AccessToken, token);
   }
 

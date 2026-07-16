@@ -1,0 +1,82 @@
+:host {
+  display: block;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 48px;
+  min-height: 320px;
+  border: 2px dashed #d1d5db;
+  border-radius: 20px;
+  background: #ffffff;
+  transition: border-color .25s ease, background-color .25s ease, transform .2s ease;
+}
+
+  .dropzone:hover {
+    border-color: #2563eb;
+  }
+
+  .dropzone.dragging {
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, .05);
+  }
+
+.upload-icon {
+  width: 72px;
+  height: 72px;
+  font-size: 72px;
+  color: #2563eb;
+}
+
+h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.progress-section {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-text {
+  align-self: center;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+button {
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+
+  .dropzone {
+    padding: 32px 20px;
+    min-height: 260px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .upload-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 56px;
+  }
+}

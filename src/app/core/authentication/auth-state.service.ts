@@ -38,7 +38,7 @@ export class AuthStateService {
    * Called after a successful login or registration.
    */
   login(response: AuthResponse): void {
-
+    console.log('AuthState.login()', response);
     this.tokenService.setToken(response.token);
 
     this.authenticatedSignal.set(true);

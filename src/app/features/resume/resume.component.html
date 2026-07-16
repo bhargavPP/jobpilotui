@@ -1,0 +1,111 @@
+<div class="resume-page">
+
+  @if (loading()) {
+
+  <div class="loading-container">
+
+    <mat-spinner diameter="48"></mat-spinner>
+
+    <p>Loading your resume...</p>
+
+  </div>
+
+  } @else if (error()) {
+
+  <mat-card>
+
+    <mat-card-header>
+
+      <mat-card-title>
+        Something went wrong
+      </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <p>{{ error() }}</p>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+
+      <button mat-flat-button
+              color="primary"
+              (click)="loadResume()">
+
+        Try Again
+
+      </button>
+
+    </mat-card-actions>
+
+  </mat-card>
+
+  } @else if (notFound()) {
+
+  <app-upload-dropzone (uploaded)="onResumeUploaded($event)">
+  </app-upload-dropzone>
+
+  } @else {
+
+  <mat-card>
+
+    <mat-card-header>
+
+      <mat-card-title>
+        My Resume
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Version {{ resume()?.version }}
+      </mat-card-subtitle>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <section>
+
+        <h3>Professional Summary</h3>
+
+        <p>
+          {{ resume()?.summary }}
+        </p>
+
+      </section>
+
+      <hr>
+
+      <section>
+
+        <p>
+          <strong>Experience:</strong>
+          {{ resume()?.experience?.length }}
+        </p>
+
+        <p>
+          <strong>Education:</strong>
+          {{ resume()?.education?.length }}
+        </p>
+
+      </section>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+
+      <button mat-flat-button
+              color="primary">
+
+        Edit Resume
+
+      </button>
+
+    </mat-card-actions>
+
+  </mat-card>
+
+  }
+
+</div>

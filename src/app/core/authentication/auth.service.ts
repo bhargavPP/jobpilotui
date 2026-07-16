@@ -36,7 +36,7 @@ export class AuthService {
       )
       .pipe(
         tap(response => {
-
+          console.log('Login Response:', response);
           this.authState.login(response);
 
         })
