@@ -1,0 +1,273 @@
+<mat-card>
+
+  <mat-card-header>
+
+    <mat-card-title>
+
+      Skills
+
+    </mat-card-title>
+
+    <mat-card-subtitle>
+
+      Showcase your technical skills.
+
+    </mat-card-subtitle>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <!-- Languages -->
+
+    <section class="skill-section">
+
+      <h3>Languages</h3>
+
+      <mat-chip-set>
+
+        @for (skill of skills().languages; track skill) {
+
+        <mat-chip-row removable
+                      (removed)="removeSkill('languages', skill)">
+
+          {{ skill }}
+
+          <button matChipRemove>
+
+            <mat-icon>cancel</mat-icon>
+
+          </button>
+
+        </mat-chip-row>
+
+        }
+
+      </mat-chip-set>
+
+      <div class="add-row">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Add Language</mat-label>
+
+          <input matInput
+                 [(ngModel)]="language">
+
+        </mat-form-field>
+
+        <button mat-flat-button
+                color="primary"
+                (click)="addSkill('languages', language)">
+
+          Add
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- Frameworks -->
+
+    <section class="skill-section">
+
+      <h3>Frameworks</h3>
+
+      <mat-chip-set>
+
+        @for (skill of skills().frameworks; track skill) {
+
+        <mat-chip-row removable
+                      (removed)="removeSkill('frameworks', skill)">
+
+          {{ skill }}
+
+          <button matChipRemove>
+
+            <mat-icon>cancel</mat-icon>
+
+          </button>
+
+        </mat-chip-row>
+
+        }
+
+      </mat-chip-set>
+
+      <div class="add-row">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Add Framework</mat-label>
+
+          <input matInput
+                 [(ngModel)]="framework">
+
+        </mat-form-field>
+
+        <button mat-flat-button
+                color="primary"
+                (click)="addSkill('frameworks', framework)">
+
+          Add
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- Cloud -->
+
+    <section class="skill-section">
+
+      <h3>Cloud</h3>
+
+      <mat-chip-set>
+
+        @for (skill of skills().cloud; track skill) {
+
+        <mat-chip-row removable
+                      (removed)="removeSkill('cloud', skill)">
+
+          {{ skill }}
+
+          <button matChipRemove>
+
+            <mat-icon>cancel</mat-icon>
+
+          </button>
+
+        </mat-chip-row>
+
+        }
+
+      </mat-chip-set>
+
+      <div class="add-row">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Add Cloud Skill</mat-label>
+
+          <input matInput
+                 [(ngModel)]="cloud">
+
+        </mat-form-field>
+
+        <button mat-flat-button
+                color="primary"
+                (click)="addSkill('cloud', cloud)">
+
+          Add
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- DevOps -->
+
+    <section class="skill-section">
+
+      <h3>DevOps</h3>
+
+      <mat-chip-set>
+
+        @for (skill of skills().devOps; track skill) {
+
+        <mat-chip-row removable
+                      (removed)="removeSkill('devOps', skill)">
+
+          {{ skill }}
+
+          <button matChipRemove>
+
+            <mat-icon>cancel</mat-icon>
+
+          </button>
+
+        </mat-chip-row>
+
+        }
+
+      </mat-chip-set>
+
+      <div class="add-row">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Add DevOps Skill</mat-label>
+
+          <input matInput
+                 [(ngModel)]="devOps">
+
+        </mat-form-field>
+
+        <button mat-flat-button
+                color="primary"
+                (click)="addSkill('devOps', devOps)">
+
+          Add
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- Databases -->
+
+    <section class="skill-section">
+
+      <h3>Databases</h3>
+
+      <mat-chip-set>
+
+        @for (skill of skills().databases; track skill) {
+
+        <mat-chip-row removable
+                      (removed)="removeSkill('databases', skill)">
+
+          {{ skill }}
+
+          <button matChipRemove>
+
+            <mat-icon>cancel</mat-icon>
+
+          </button>
+
+        </mat-chip-row>
+
+        }
+
+      </mat-chip-set>
+
+      <div class="add-row">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>Add Database</mat-label>
+
+          <input matInput
+                 [(ngModel)]="database">
+
+        </mat-form-field>
+
+        <button mat-flat-button
+                color="primary"
+                (click)="addSkill('databases', database)">
+
+          Add
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,73 @@
+<mat-card class="experience-card">
+
+  <mat-card-header>
+
+    <div class="header">
+
+      <div>
+
+        <h3>
+
+          {{ experience().title }}
+
+        </h3>
+
+        <h4>
+
+          {{ experience().company }}
+
+        </h4>
+
+        <span class="dates">
+
+          {{ getDateRange() }}
+
+        </span>
+
+      </div>
+
+      <div class="actions">
+
+        <button mat-icon-button
+                color="primary"
+                (click)="onEdit()">
+
+          <mat-icon>edit</mat-icon>
+
+        </button>
+
+        <button mat-icon-button
+                color="warn"
+                (click)="onDelete()">
+
+          <mat-icon>delete</mat-icon>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+
+    <ul>
+
+      @for (bullet of experience().bullets; track bullet.id) {
+
+      <li>
+
+        {{ bullet.text }}
+
+      </li>
+
+      }
+
+    </ul>
+
+  </mat-card-content>
+
+</mat-card>

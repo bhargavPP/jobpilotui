@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+mat-card {
+  border-radius: 16px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.skill-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+  .skill-section h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+mat-chip-set {
+  min-height: 48px;
+}
+
+.add-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+  .add-row mat-form-field {
+    flex: 1;
+  }
+
+  .add-row button {
+    height: 56px;
+  }
+
+@media (max-width: 768px) {
+
+  .add-row {
+    flex-direction: column;
+  }
+
+    .add-row button {
+      width: 100%;
+    }
+}

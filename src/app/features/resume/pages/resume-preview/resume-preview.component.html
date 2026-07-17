@@ -1,0 +1,236 @@
+@if (loading()) {
+
+<div class="loading">
+
+  <mat-spinner></mat-spinner>
+
+</div>
+
+}
+
+@else if (error()) {
+
+<mat-card>
+
+  <mat-card-content>
+
+    {{ error() }}
+
+  </mat-card-content>
+
+</mat-card>
+
+}
+
+@else {
+
+<div class="toolbar">
+
+  <button mat-stroked-button
+          routerLink="/resume">
+
+    <mat-icon>arrow_back</mat-icon>
+
+    Back
+
+  </button>
+
+  <button mat-flat-button
+          color="primary"
+          onclick="window.print()">
+
+    <mat-icon>print</mat-icon>
+
+    Print
+
+  </button>
+
+</div>
+
+<section class="resume">
+
+  <header>
+
+    <h1>Professional Resume</h1>
+
+  </header>
+
+  <mat-divider></mat-divider>
+
+  <section>
+
+    <h2>Professional Summary</h2>
+
+    <p>
+
+      {{ resume()?.summary }}
+
+    </p>
+
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+
+    <h2>Professional Experience</h2>
+
+    @for (experience of resume()?.experience; track experience.id) {
+
+    <div class="experience">
+
+      <div class="header">
+
+        <div>
+
+          <h3>
+
+            {{ experience.title }}
+
+          </h3>
+
+          <strong>
+
+            {{ experience.company }}
+
+          </strong>
+
+        </div>
+
+        <span>
+
+          {{ getDateRange(experience.startDate, experience.endDate) }}
+
+        </span>
+
+      </div>
+
+      <ul>
+
+        @for (bullet of experience.bullets; track bullet.id) {
+
+        <li>
+
+          {{ bullet.text }}
+
+        </li>
+
+        }
+
+      </ul>
+
+    </div>
+
+    }
+
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+
+    <h2>Education</h2>
+
+    @for (education of resume()?.education; track education.institution) {
+
+    <div class="education">
+
+      <h3>
+
+        {{ education.institution }}
+
+      </h3>
+
+      <div>
+
+        {{ education.degree }}
+
+      </div>
+
+      @if (education.graduationDate) {
+
+      <div>
+
+        Graduated {{ getDateRange(education.graduationDate, education.graduationDate).replace(' - ','') }}
+
+      </div>
+
+      }
+
+    </div>
+
+    }
+
+  </section>
+
+  <mat-divider></mat-divider>
+
+  @if (hasSkills()) {
+
+  <section>
+
+    <h2>Technical Skills</h2>
+
+    <div class="skills-grid">
+
+      @if (resume()?.skills?.languages?.length) {
+      <div>
+        <h3>Languages</h3>
+        <ul>
+          @for (skill of resume()!.skills.languages; track skill) {
+          <li>{{ skill }}</li>
+          }
+        </ul>
+      </div>
+      }
+
+      @if (resume()?.skills?.frameworks?.length) {
+      <div>
+        <h3>Frameworks</h3>
+        <ul>
+          @for (skill of resume()!.skills.frameworks; track skill) {
+          <li>{{ skill }}</li>
+          }
+        </ul>
+      </div>
+      }
+
+      @if (resume()?.skills?.cloud?.length) {
+      <div>
+        <h3>Cloud</h3>
+        <ul>
+          @for (skill of resume()!.skills.cloud; track skill) {
+          <li>{{ skill }}</li>
+          }
+        </ul>
+      </div>
+      }
+
+      @if (resume()?.skills?.devOps?.length) {
+      <div>
+        <h3>DevOps</h3>
+        <ul>
+          @for (skill of resume()!.skills.devOps; track skill) {
+          <li>{{ skill }}</li>
+          }
+        </ul>
+      </div>
+      }
+
+      @if (resume()?.skills?.databases?.length) {
+      <div>
+        <h3>Databases</h3>
+        <ul>
+          @for (skill of resume()!.skills.databases; track skill) {
+          <li>{{ skill }}</li>
+          }
+        </ul>
+      </div>
+      }
+
+    </div>
+
+  </section>
+
+  }
+  }

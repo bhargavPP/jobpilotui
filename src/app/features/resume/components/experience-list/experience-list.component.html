@@ -1,0 +1,79 @@
+<mat-card>
+
+  <mat-card-header>
+
+    <mat-card-title>
+
+      Work Experience
+
+    </mat-card-title>
+
+    <mat-card-subtitle>
+
+      Showcase your professional experience.
+
+    </mat-card-subtitle>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    @if (experiences().length === 0) {
+
+    <div class="empty-state">
+
+      <mat-icon>work_outline</mat-icon>
+
+      <p>
+
+        No work experience added yet.
+
+      </p>
+
+      <button mat-flat-button
+              color="primary"
+              (click)="onAdd()">
+
+        <mat-icon>add</mat-icon>
+
+        Add Experience
+
+      </button>
+
+    </div>
+
+    } @else {
+
+    <div class="experience-list">
+
+      @for (experience of experiences(); track trackByExperience($index,
+      experience)) {
+
+      <app-experience-card [experience]="experience"
+                           (edit)="onEdit($event)"
+                           (delete)="onDelete($event)">
+      </app-experience-card>
+
+      }
+
+      <div class="actions">
+
+        <button mat-stroked-button
+                color="primary"
+                (click)="onAdd()">
+
+          <mat-icon>add</mat-icon>
+
+          Add Another Experience
+
+        </button>
+
+      </div>
+
+    </div>
+
+    }
+
+  </mat-card-content>
+
+</mat-card>

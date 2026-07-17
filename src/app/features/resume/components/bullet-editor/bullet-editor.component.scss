@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.bullet-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullet-field {
+  flex: 1;
+}

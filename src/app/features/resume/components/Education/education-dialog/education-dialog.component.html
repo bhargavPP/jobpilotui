@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>
+
+  {{ data ? 'Edit Education' : 'Add Education' }}
+
+</h2>
+
+<mat-dialog-content>
+
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+
+        Institution
+
+      </mat-label>
+
+      <input matInput
+             formControlName="institution">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+
+        Degree
+
+      </mat-label>
+
+      <input matInput
+             formControlName="degree">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>
+
+        Graduation Date
+
+      </mat-label>
+
+      <input matInput
+             type="date"
+             formControlName="graduationDate">
+
+    </mat-form-field>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button
+          (click)="cancel()">
+
+    Cancel
+
+  </button>
+
+  <button mat-flat-button
+          color="primary"
+          (click)="save()">
+
+    Save
+
+  </button>
+
+</mat-dialog-actions>

@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+mat-card {
+  border-radius: 16px;
+}
+
+mat-card-header {
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+mat-card-subtitle {
+  color: #6b7280;
+}
+
+.full-width {
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 180px;
+  line-height: 1.6;
+}
+
+mat-card-actions {
+  padding: 16px 24px 24px;
+}
+
+button {
+  min-width: 160px;
+}
+
+@media (max-width: 768px) {
+
+  textarea {
+    min-height: 140px;
+  }
+}

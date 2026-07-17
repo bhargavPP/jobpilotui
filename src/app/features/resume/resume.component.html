@@ -54,55 +54,91 @@
     <mat-card-header>
 
       <mat-card-title>
+
         My Resume
+
       </mat-card-title>
 
       <mat-card-subtitle>
+
         Version {{ resume()?.version }}
+
       </mat-card-subtitle>
 
     </mat-card-header>
 
     <mat-card-content>
+      <!--<div class="resume-actions">
 
-      <section>
+    <button mat-flat-button
+            color="primary"
+            routerLink="/resume/preview">
 
-        <h3>Professional Summary</h3>
+      <mat-icon>visibility</mat-icon>
 
-        <p>
-          {{ resume()?.summary }}
-        </p>
+      Preview Resume
 
-      </section>
+    </button>
 
-      <hr>
+  </div>-->
+      
+      <div class="resume-actions">
 
-      <section>
+        <button mat-stroked-button
+                (click)="saveResume()">
 
-        <p>
-          <strong>Experience:</strong>
-          {{ resume()?.experience?.length }}
-        </p>
+          <mat-icon>save</mat-icon>
 
-        <p>
-          <strong>Education:</strong>
-          {{ resume()?.education?.length }}
-        </p>
+          Save
 
-      </section>
+        </button>
+
+        <button mat-flat-button
+                color="primary"
+                 (click)="goToPreview()">
+
+          <mat-icon>visibility</mat-icon>
+
+          Preview
+
+        </button>
+
+      </div>
+      <!-- Summary -->
+
+      <app-summary-editor [summary]="resume()!.summary"
+                          (save)="saveSummary($event)">
+      </app-summary-editor>
+
+      <br>
+
+      <!-- Experience -->
+
+      <app-experience-list [experiences]="resume()!.experience"
+                           (add)="addExperience()"
+                           (edit)="editExperience($event)"
+                           (delete)="deleteExperience($event)">
+      </app-experience-list>
+
+      <br>
+
+      <!-- Education (Temporary) -->
+
+      <app-education-list [education]="resume()!.education"
+                          (add)="addEducation()"
+                          (edit)="editEducation($event)"
+                          (delete)="deleteEducation($event)">
+      </app-education-list>
+
+      <br>
+
+      <!-- Skills (Temporary) -->
+
+      <app-skills-editor [skills]="resume()!.skills"
+                         (save)="saveSkills($event)">
+      </app-skills-editor>
 
     </mat-card-content>
-
-    <mat-card-actions>
-
-      <button mat-flat-button
-              color="primary">
-
-        Edit Resume
-
-      </button>
-
-    </mat-card-actions>
 
   </mat-card>
 

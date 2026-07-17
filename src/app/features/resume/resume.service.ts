@@ -1,5 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEvent,
+  HttpRequest
+} from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -7,6 +11,7 @@ import { environment } from '../../../environments/environment';
 
 import { ResumeProfile } from './resume.model';
 import { ResumeUpsertRequest } from './resume-upsert-request.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,20 +22,18 @@ export class ResumeService {
   private readonly apiUrl = `${environment.apiUrl}/resume`;
 
   /**
-   * Returns the current user's resume.
+   * Returns current user's resume.
    */
   getResume(): Observable<ResumeProfile> {
 
-    return this.http.get<ResumeProfile>(
-      this.apiUrl
-    );
+    return this.http.get<ResumeProfile>(this.apiUrl);
 
   }
 
   /**
-   * Saves the resume.
+   * Updates entire resume.
    */
-  saveResume(
+  updateResume(
     request: ResumeUpsertRequest
   ): Observable<ResumeProfile> {
 
@@ -42,7 +45,7 @@ export class ResumeService {
   }
 
   /**
-   * Uploads and parses a DOCX resume.
+   * Upload DOCX resume.
    */
   uploadResume(
     file: File
@@ -50,20 +53,18 @@ export class ResumeService {
 
     const formData = new FormData();
 
-    formData.append(
-      'file',
-      file,
-      file.name
-    );
+    formData.append('file', file);
 
-    return this.http.post<ResumeProfile>(
+    const request = new HttpRequest(
+      'POST',
       `${this.apiUrl}/upload`,
       formData,
       {
-        observe: 'events',
         reportProgress: true
       }
     );
+
+    return this.http.request<ResumeProfile>(request);
 
   }
 

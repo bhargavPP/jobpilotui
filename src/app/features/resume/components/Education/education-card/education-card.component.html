@@ -1,0 +1,63 @@
+<mat-card class="education-card">
+
+  <mat-card-header>
+
+    <div class="header">
+
+      <div class="details">
+
+        <h3>
+
+          {{ education().institution }}
+
+        </h3>
+
+        <h4>
+
+          {{ education().degree }}
+
+        </h4>
+
+        <span class="graduation">
+
+          Graduated {{ getGraduationDate() }}
+
+        </span>
+
+      </div>
+
+      <div class="actions">
+
+        <button mat-icon-button
+                color="primary"
+                (click)="onEdit()">
+
+          <mat-icon>
+
+            edit
+
+          </mat-icon>
+
+        </button>
+
+        <button mat-icon-button
+                color="warn"
+                (click)="onDelete()">
+
+          <mat-icon>
+
+            delete
+
+          </mat-icon>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+
+</mat-card>

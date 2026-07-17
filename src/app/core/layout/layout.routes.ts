@@ -28,7 +28,7 @@ export const LAYOUT_ROUTES: Routes = [
           import('../../features/resume/resume.routes')
             .then(m => m.RESUME_ROUTES)
       },
-
+    
       {
         path: '',
         pathMatch: 'full',

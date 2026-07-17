@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+
+mat-dialog-content {
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.bullet-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.bullet-field {
+  flex: 1;
+}
+
+mat-dialog-actions {
+  padding-top: 16px;
+}
+
+@media (max-width: 768px) {
+
+  mat-dialog-content {
+    max-height: 60vh;
+  }
+}

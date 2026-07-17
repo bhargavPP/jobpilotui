@@ -1,0 +1,27 @@
+<div class="bullet-row"
+     [formGroup]="control()">
+
+  <mat-form-field appearance="outline"
+                  class="bullet-field">
+
+    <mat-label>
+
+      Responsibility
+
+    </mat-label>
+
+    <input matInput
+           formControlName="text">
+
+  </mat-form-field>
+
+  <button mat-icon-button
+          color="warn"
+          type="button"
+          (click)="removeBullet()">
+
+    <mat-icon>delete</mat-icon>
+
+  </button>
+
+</div>

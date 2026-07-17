@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.education-card {
+  border-radius: 16px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.details {
+  flex: 1;
+}
+
+h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h4 {
+  margin: 8px 0;
+  font-size: 17px;
+  color: #616161;
+  font-weight: 500;
+}
+
+.graduation {
+  color: #757575;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+}
+
+@media (max-width:768px) {
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

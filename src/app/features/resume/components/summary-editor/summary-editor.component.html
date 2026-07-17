@@ -1,0 +1,74 @@
+<mat-card>
+
+  <mat-card-header>
+
+    <mat-card-title>
+
+      Professional Summary
+
+    </mat-card-title>
+
+    <mat-card-subtitle>
+
+      Introduce yourself to recruiters in a few sentences.
+
+    </mat-card-subtitle>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form [formGroup]="form">
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>
+
+          Summary
+
+        </mat-label>
+
+        <textarea matInput
+                  rows="8"
+                  maxlength="2000"
+                  formControlName="summary">
+
+        </textarea>
+
+        <mat-hint align="end">
+
+          {{ form.controls.summary.value.length }} / 2000
+
+        </mat-hint>
+
+        @if (form.controls.summary.hasError('required')) {
+
+        <mat-error>
+
+          Summary is required.
+
+        </mat-error>
+
+        }
+
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+
+    <button mat-flat-button
+            color="primary"
+            type="button"
+            (click)="saveSummary()"
+            [disabled]="form.invalid">
+
+      Save Summary
+
+    </button>
+
+  </mat-card-actions>
+
+</mat-card>

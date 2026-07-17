@@ -10,5 +10,11 @@ export const RESUME_ROUTES: Routes = [
         m => m.ResumeComponent
       ),
     title: 'Resume | JobPilot'
+  },
+  {
+    path: 'preview',
+    loadComponent: () =>
+      import('./pages/resume-preview/resume-preview.component')
+        .then(m => m.ResumePreviewComponent)
   }
 ];

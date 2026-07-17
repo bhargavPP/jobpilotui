@@ -1,0 +1,90 @@
+<mat-card>
+
+  <mat-card-header>
+
+    <mat-card-title>
+
+      Education
+
+    </mat-card-title>
+
+    <mat-card-subtitle>
+
+      Showcase your academic background.
+
+    </mat-card-subtitle>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    @if (education().length === 0) {
+
+    <div class="empty-state">
+
+      <mat-icon>
+
+        school
+
+      </mat-icon>
+
+      <p>
+
+        No education added yet.
+
+      </p>
+
+      <button mat-flat-button
+              color="primary"
+              (click)="onAdd()">
+
+        <mat-icon>
+
+          add
+
+        </mat-icon>
+
+        Add Education
+
+      </button>
+
+    </div>
+
+    } @else {
+
+    <div class="education-list">
+
+      @for (item of education(); track trackByEducation($index, item)) {
+
+      <app-education-card [education]="item"
+                          (edit)="onEdit($event)"
+                          (delete)="onDelete($event)">
+      </app-education-card>
+
+      }
+
+      <div class="actions">
+
+        <button mat-stroked-button
+                color="primary"
+                (click)="onAdd()">
+
+          <mat-icon>
+
+            add
+
+          </mat-icon>
+
+          Add Another Education
+
+        </button>
+
+      </div>
+
+    </div>
+
+    }
+
+  </mat-card-content>
+
+</mat-card>

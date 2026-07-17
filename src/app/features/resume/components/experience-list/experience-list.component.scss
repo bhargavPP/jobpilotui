@@ -1,0 +1,70 @@
+:host {
+  display: block;
+}
+
+mat-card {
+  border-radius: 16px;
+}
+
+mat-card-header {
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+mat-card-subtitle {
+  color: #6b7280;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.empty-state {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+  .empty-state mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    color: #9ca3af;
+  }
+
+  .empty-state p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 15px;
+  }
+
+button mat-icon {
+  margin-right: 6px;
+}
+
+@media (max-width: 768px) {
+
+  .actions {
+    justify-content: stretch;
+  }
+
+    .actions button {
+      width: 100%;
+    }
+}
