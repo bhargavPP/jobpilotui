@@ -36,6 +36,8 @@ import { SkillSet } from './resume.model';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+
+import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
 @Component({
   selector: 'app-resume',
 
@@ -463,6 +465,38 @@ export class ResumeComponent {
   goToPreview(): void {
 
     this.router.navigate(['/resume/preview']);
+
+  }
+
+  deleteResume(): void {
+
+    this.dialog.open(DeleteConfirmDialogComponent)
+      .afterClosed()
+      .subscribe(result => {
+
+        if (!result) {
+          return;
+        }
+
+        this.resumeService.deleteResume().subscribe({
+
+          next: () => {
+
+            this.resume.set(null);
+
+            this.notFound.set(true);
+
+          },
+
+          error: () => {
+
+            alert('Unable to delete resume.');
+
+          }
+
+        });
+
+      });
 
   }
 }

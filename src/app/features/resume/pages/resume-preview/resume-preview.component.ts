@@ -92,6 +92,10 @@ export class ResumePreviewComponent implements OnInit {
     return `${monthName} ${year}`;
 
   }
+  get orderedCustomSections() {
+    return [...(this.resume()?.customSections ?? [])]
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  }
   hasSkills(): boolean {
     const skills = this.resume()?.skills;
 

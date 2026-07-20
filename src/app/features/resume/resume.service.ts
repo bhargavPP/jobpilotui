@@ -68,4 +68,8 @@ export class ResumeService {
 
   }
 
+  deleteResume() {
+    return this.http.delete(`${this.apiUrl}`);
+  }
+
 }

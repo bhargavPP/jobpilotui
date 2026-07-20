@@ -1,9 +1,7 @@
 @if (loading()) {
 
 <div class="loading">
-
   <mat-spinner></mat-spinner>
-
 </div>
 
 }
@@ -11,13 +9,9 @@
 @else if (error()) {
 
 <mat-card>
-
   <mat-card-content>
-
     {{ error() }}
-
   </mat-card-content>
-
 </mat-card>
 
 }
@@ -26,23 +20,14 @@
 
 <div class="toolbar">
 
-  <button mat-stroked-button
-          routerLink="/resume">
-
+  <button mat-stroked-button routerLink="/resume">
     <mat-icon>arrow_back</mat-icon>
-
     Back
-
   </button>
 
-  <button mat-flat-button
-          color="primary"
-          onclick="window.print()">
-
+  <button mat-flat-button color="primary" onclick="window.print()">
     <mat-icon>print</mat-icon>
-
     Print
-
   </button>
 
 </div>
@@ -50,26 +35,24 @@
 <section class="resume">
 
   <header>
-
     <h1>Professional Resume</h1>
-
   </header>
 
   <mat-divider></mat-divider>
+
+  <!-- Summary -->
 
   <section>
 
     <h2>Professional Summary</h2>
 
-    <p>
-
-      {{ resume()?.summary }}
-
-    </p>
+    <p>{{ resume()?.summary }}</p>
 
   </section>
 
   <mat-divider></mat-divider>
+
+  <!-- Experience -->
 
   <section>
 
@@ -82,25 +65,12 @@
       <div class="header">
 
         <div>
-
-          <h3>
-
-            {{ experience.title }}
-
-          </h3>
-
-          <strong>
-
-            {{ experience.company }}
-
-          </strong>
-
+          <h3>{{ experience.title }}</h3>
+          <strong>{{ experience.company }}</strong>
         </div>
 
         <span>
-
           {{ getDateRange(experience.startDate, experience.endDate) }}
-
         </span>
 
       </div>
@@ -109,11 +79,7 @@
 
         @for (bullet of experience.bullets; track bullet.id) {
 
-        <li>
-
-          {{ bullet.text }}
-
-        </li>
+        <li>{{ bullet.text }}</li>
 
         }
 
@@ -127,6 +93,8 @@
 
   <mat-divider></mat-divider>
 
+  <!-- Education -->
+
   <section>
 
     <h2>Education</h2>
@@ -135,24 +103,15 @@
 
     <div class="education">
 
-      <h3>
+      <h3>{{ education.institution }}</h3>
 
-        {{ education.institution }}
-
-      </h3>
-
-      <div>
-
-        {{ education.degree }}
-
-      </div>
+      <div>{{ education.degree }}</div>
 
       @if (education.graduationDate) {
 
       <div>
-
-        Graduated {{ getDateRange(education.graduationDate, education.graduationDate).replace(' - ','') }}
-
+        Graduated
+        {{ getDateRange(education.graduationDate, education.graduationDate).replace(' - ','') }}
       </div>
 
       }
@@ -163,9 +122,10 @@
 
   </section>
 
-  <mat-divider></mat-divider>
-
+  <!-- Technical Skills -->
   @if (hasSkills()) {
+
+  <mat-divider></mat-divider>
 
   <section>
 
@@ -233,4 +193,34 @@
   </section>
 
   }
+
+  <!-- Custom Sections -->
+  @if (orderedCustomSections.length) {
+
+  <mat-divider></mat-divider>
+
+  @for (section of orderedCustomSections; track section.id) {
+
+  <section class="custom-section">
+
+    <h2>{{ section.title }}</h2>
+
+    <ul>
+
+      @for (item of section.items; track item.id) {
+
+      <li>{{ item.text }}</li>
+
+      }
+
+    </ul>
+
+  </section>
+
   }
+
+  }
+
+</section>
+
+}
