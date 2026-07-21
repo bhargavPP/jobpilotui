@@ -1,18 +1,83 @@
-.card {
-  padding: 20px;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  text-align: center;
+:host {
+  display: block;
+}
+
+.score-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transition: all .25s ease;
+}
+
+  .score-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, .12);
+  }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .title {
-  color: #666;
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
 }
 
-.value {
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+  .badge.excellent {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .badge.good {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  .badge.fair {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  .badge.poor {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+.score-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.score-circle {
+  --size: 150px;
+  --progress: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(closest-side,#fff 82%,transparent 83% 100%), conic-gradient( #2563eb calc(var(--progress) * 1%), #e5e7eb 0 );
+}
+
+.score-value {
   font-size: 42px;
   font-weight: 700;
-  color: #2563eb;
+  color: #111827;
 }
+
+  .score-value small {
+    font-size: 18px;
+    color: #6b7280;
+  }

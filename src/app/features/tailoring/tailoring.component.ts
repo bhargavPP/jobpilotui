@@ -1,43 +1,64 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { finalize } from 'rxjs';
 
 import { TailoringService } from './tailoring.service';
 import { TailoredResumeResult } from './models/tailored-resume-result';
+
+import { TailoringFormComponent } from './components/tailoring-form/tailoring-form.component';
+import { ScoreCardComponent } from './components/score-card/score-card.component';
+import { SummaryCardComponent } from './components/summary-card/summary-card.component';
+import { ResumePreviewComponent } from './components/resume-preview/resume-preview.component';
+import { SkillsCardComponent } from './components/skills-card/skills-card.component';
+import { RecommendationsCardComponent } from './components/recommendations-card/recommendations-card.component';
+import { CoverLetterCardComponent } from './components/cover-letter-card/cover-letter-card.component';
 
 @Component({
   selector: 'app-tailoring',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    TailoringFormComponent,
+    ScoreCardComponent,
+    SummaryCardComponent,
+    ResumePreviewComponent,
+    SkillsCardComponent,
+    RecommendationsCardComponent,
+    CoverLetterCardComponent
   ],
   templateUrl: './tailoring.component.html',
   styleUrls: ['./tailoring.component.scss']
 })
-export class TailoringComponent {
+export class TailoringComponent implements OnDestroy {
 
-  loadingSteps = [
-    'Reading your resume...',
-    'Analyzing job description...',
-    'Extracting ATS keywords...',
-    'Optimizing professional summary...',
-    'Rewriting experience...',
-    'Generating cover letter...',
-    'Finalizing results...'
-  ];
-
-  currentStep = 0;
+  loading = false;
 
   companyName = '';
   jobTitle = '';
   jobUrl = '';
   jobDescription = '';
 
-  loading = false;
-
-  // Allow null so we can reset the result before a new request
   result: TailoredResumeResult | null = null;
+
+  progress = 0;
+
+  currentStep = 0;
+
+  loadingSteps = [
+    'Reading your resume',
+    'Analyzing job description',
+    'Extracting ATS keywords',
+    'Optimizing professional summary',
+    'Rewriting work experience',
+    'Generating cover letter',
+    'Finalizing'
+  ];
+
+  loadingMessage = this.loadingSteps[0];
+
+  private timer: ReturnType<typeof setInterval> | null = null;
 
   constructor(
     private tailoringService: TailoringService
@@ -45,51 +66,107 @@ export class TailoringComponent {
 
   tailorResume(): void {
 
+    if (this.loading) {
+      return;
+    }
+
     if (!this.jobDescription.trim()) {
       return;
     }
 
     this.loading = true;
     this.result = null;
+
+    this.progress = 0;
     this.currentStep = 0;
+    this.loadingMessage = this.loadingSteps[0];
 
-    const interval = setInterval(() => {
+    this.startAnimation();
 
-      if (this.currentStep < this.loadingSteps.length - 1) {
+    this.tailoringService
+      .tailorResume({
+        companyName: this.companyName,
+        jobTitle: this.jobTitle,
+        jobUrl: this.jobUrl,
+        jobDescription: this.jobDescription
+      })
+      .pipe(
+        finalize(() => {
+
+          this.stopAnimation();
+
+          this.progress = 100;
+
+          this.currentStep =
+            this.loadingSteps.length - 1;
+
+          this.loadingMessage = 'Completed';
+
+          this.loading = false;
+
+        })
+      )
+      .subscribe({
+
+        next: result => {
+
+          this.result = result;
+
+        },
+
+        error: err => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
+  private startAnimation(): void {
+
+    this.stopAnimation();
+
+    this.timer = setInterval(() => {
+
+      if (this.progress < 92) {
+
+        this.progress += 4;
+
+      }
+
+      if (
+        this.currentStep <
+        this.loadingSteps.length - 1
+      ) {
+
         this.currentStep++;
-      }
 
-    }, 900);
-
-    this.tailoringService.tailorResume({
-
-      companyName: this.companyName,
-      jobTitle: this.jobTitle,
-      jobUrl: this.jobUrl,
-      jobDescription: this.jobDescription
-
-    }).subscribe({
-
-      next: (res: TailoredResumeResult) => {
-
-        clearInterval(interval);
-
-        this.result = res;
-        this.loading = false;
-
-      },
-
-      error: (err) => {
-
-        clearInterval(interval);
-
-        console.error('Tailoring failed:', err);
-
-        this.loading = false;
+        this.loadingMessage =
+          this.loadingSteps[this.currentStep];
 
       }
 
-    });
+    }, 700);
+
+  }
+
+  private stopAnimation(): void {
+
+    if (this.timer) {
+
+      clearInterval(this.timer);
+
+      this.timer = null;
+
+    }
+
+  }
+
+  ngOnDestroy(): void {
+
+    this.stopAnimation();
 
   }
 

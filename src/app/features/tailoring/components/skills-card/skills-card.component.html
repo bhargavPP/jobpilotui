@@ -1,0 +1,160 @@
+<div class="card" >
+
+  <h2>Technical Skills</h2>
+
+  <div class="section">
+
+    <h3>Languages</h3>
+
+    <div class="chips">
+
+      <span class="chip"
+            *ngFor="let skill of skills.languages">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>Frameworks</h3>
+
+    <div class="chips">
+
+      <span class="chip"
+            *ngFor="let skill of skills.frameworks">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>Cloud</h3>
+
+    <div class="chips">
+
+      <span class="chip"
+            *ngFor="let skill of skills.cloud">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>DevOps</h3>
+
+    <div class="chips">
+
+      <span class="chip"
+            *ngFor="let skill of skills.devOps">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>Databases</h3>
+
+    <div class="chips">
+
+      <span class="chip"
+            *ngFor="let skill of skills.databases">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="section">
+
+    <h3>Required Skills</h3>
+
+    <div class="chips">
+
+      <span class="chip required"
+            *ngFor="let skill of requiredSkills">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>Nice To Have</h3>
+
+    <div class="chips">
+
+      <span class="chip optional"
+            *ngFor="let skill of niceToHave">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>ATS Keywords</h3>
+
+    <div class="chips">
+
+      <span class="chip keyword"
+            *ngFor="let keyword of keywords">
+
+        {{ keyword }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h3>Missing Skills</h3>
+
+    <div class="chips">
+
+      <span class="chip missing"
+            *ngFor="let skill of missingSkills">
+
+        {{ skill }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+</div>

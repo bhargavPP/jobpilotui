@@ -1,0 +1,22 @@
+<div class="card">
+
+  <div class="header">
+
+    <h2>Cover Letter</h2>
+
+    <button class="copy-btn"
+            type="button"
+            (click)="copyToClipboard()">
+
+      {{ copied ? 'Copied ✓' : 'Copy' }}
+
+    </button>
+
+  </div>
+
+  <textarea rows="16"
+            readonly
+            [value]="coverLetter">
+  </textarea>
+
+</div>

@@ -1,0 +1,53 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  margin-bottom: 24px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: #334155;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.required {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.optional {
+  background: #ecfeff;
+  color: #0891b2;
+}
+
+.keyword {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.missing {
+  background: #fef2f2;
+  color: #dc2626;
+}

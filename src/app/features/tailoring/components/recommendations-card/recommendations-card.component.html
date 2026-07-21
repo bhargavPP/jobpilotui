@@ -1,0 +1,29 @@
+<div class="card">
+
+  <h2>AI Recommendations</h2>
+
+  <div class="recommendation"
+       *ngFor="let recommendation of recommendations">
+
+    <div class="icon">
+
+      💡
+
+    </div>
+
+    <div class="content">
+
+      {{ recommendation }}
+
+    </div>
+
+  </div>
+
+  <div class="empty"
+       *ngIf="recommendations.length === 0">
+
+    Great! No additional recommendations.
+
+  </div>
+
+</div>

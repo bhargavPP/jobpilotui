@@ -1,0 +1,93 @@
+<ng-container *ngIf="result as resume">
+
+  <div class="resume">
+
+    <div class="header">
+
+      <h1>{{ resume.jobTitle || 'Professional Resume' }}</h1>
+
+      <h2>{{ resume.companyName }}</h2>
+
+    </div>
+
+    <section>
+
+      <h3>Professional Summary</h3>
+
+      <p>{{ resume.tailoredSummary }}</p>
+
+    </section>
+
+    <section>
+
+      <h3>Professional Experience</h3>
+
+      <div class="experience"
+           *ngFor="let exp of resume.experience">
+
+        <h4>{{ exp.title }}</h4>
+
+        <strong>{{ exp.company }}</strong>
+
+        <div class="date">
+
+          {{ exp.startDate }}
+
+          -
+
+          {{ exp.endDate || 'Present' }}
+
+        </div>
+
+        <ul>
+
+          <li *ngFor="let bullet of exp.bullets">
+
+            {{ bullet.text }}
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <h3>Technical Skills</h3>
+
+      <div class="skills-grid">
+
+        <div *ngIf="resume.skills.languages?.length">
+          <strong>Languages</strong>
+          <p>{{ resume.skills.languages.join(', ') }}</p>
+        </div>
+
+        <div *ngIf="resume.skills.frameworks?.length">
+          <strong>Frameworks</strong>
+          <p>{{ resume.skills.frameworks.join(', ') }}</p>
+        </div>
+
+        <div *ngIf="resume.skills.cloud?.length">
+          <strong>Cloud</strong>
+          <p>{{ resume.skills.cloud.join(', ') }}</p>
+        </div>
+
+        <div *ngIf="resume.skills.devOps?.length">
+          <strong>DevOps</strong>
+          <p>{{ resume.skills.devOps.join(', ') }}</p>
+        </div>
+
+        <div *ngIf="resume.skills.databases?.length">
+          <strong>Databases</strong>
+          <p>{{ resume.skills.databases.join(', ') }}</p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</ng-container>

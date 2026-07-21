@@ -33,7 +33,12 @@ export const LAYOUT_ROUTES: Routes = [
           import('../../features/resume/resume.routes')
             .then(m => m.RESUME_ROUTES)
       },
-    
+      {
+        path: 'tailoring',
+        loadChildren: () =>
+          import('../../features/tailoring/tailoring.routes')
+            .then(m => m.TAILORING_ROUTES)
+      },
       {
         path: '',
         pathMatch: 'full',

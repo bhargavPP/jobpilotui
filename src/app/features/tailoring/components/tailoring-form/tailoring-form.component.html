@@ -1,0 +1,79 @@
+<div class="form-container">
+
+  <div class="header">
+
+    <div class="icon">
+      🤖
+    </div>
+
+    <div>
+      <h2>AI Resume Tailoring</h2>
+      <p>Create an ATS-optimized resume in seconds.</p>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Company</label>
+
+    <input type="text"
+           [ngModel]="companyName"
+           (ngModelChange)="companyNameChange.emit($event)"
+           placeholder="Microsoft">
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Job Title</label>
+
+    <input type="text"
+           [ngModel]="jobTitle"
+           (ngModelChange)="jobTitleChange.emit($event)"
+           placeholder="Senior .NET Developer">
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Job URL</label>
+
+    <input type="url"
+           [ngModel]="jobUrl"
+           (ngModelChange)="jobUrlChange.emit($event)"
+           placeholder="https://company.com/jobs/123">
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Job Description</label>
+
+    <textarea rows="16"
+              [ngModel]="jobDescription"
+              (ngModelChange)="jobDescriptionChange.emit($event)"
+              placeholder="Paste the complete job description here...">
+    </textarea>
+
+    <small>
+      The more complete the job description, the better the AI optimization.
+    </small>
+
+  </div>
+
+  <button class="primary-button"
+          (click)="tailor.emit()"
+          [disabled]="loading || !jobDescription.trim()">
+
+    <span *ngIf="!loading">
+      🚀 Tailor Resume
+    </span>
+
+    <span *ngIf="loading">
+      ⏳ Generating...
+    </span>
+
+  </button>
+
+</div>

@@ -6,12 +6,36 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './score-card.component.html',
-  styleUrl: './score-card.component.scss'
+  styleUrls: ['./score-card.component.scss']
 })
 export class ScoreCardComponent {
 
   @Input() title = '';
 
-  @Input() value: number | string = '';
+  @Input() value = 0;
+
+  get scoreLabel(): string {
+
+    if (this.value >= 90) return 'Excellent';
+
+    if (this.value >= 75) return 'Good';
+
+    if (this.value >= 60) return 'Fair';
+
+    return 'Needs Work';
+
+  }
+
+  get scoreClass(): string {
+
+    if (this.value >= 90) return 'excellent';
+
+    if (this.value >= 75) return 'good';
+
+    if (this.value >= 60) return 'fair';
+
+    return 'poor';
+
+  }
 
 }
