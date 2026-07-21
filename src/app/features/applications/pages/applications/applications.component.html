@@ -1,0 +1,46 @@
+<div class="page">
+
+  <div class="page-header">
+    <h2>Applications</h2>
+    <span class="count" *ngIf="!loading">
+      {{ applications.length }} application{{ applications.length !== 1 ? 's' : '' }}
+    </span>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    Loading applications...
+  </div>
+
+  <div *ngIf="!loading && applications.length === 0" class="empty-state">
+    <h3>No applications yet</h3>
+    <p>
+      Tailor a resume for a job and it will appear here.
+    </p>
+  </div>
+
+  <table class="table"
+         *ngIf="!loading && applications.length > 0">
+
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Position</th>
+        <th>Match</th>
+        <th>Status</th>
+        <th>Applied</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let app of applications">
+        <td>{{ app.companyName }}</td>
+        <td>{{ app.jobTitle }}</td>
+        <td>{{ app.matchScore }}%</td>
+        <td>{{ app.status }}</td>
+        <td>{{ app.createdAt | date:'mediumDate' }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

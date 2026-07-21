@@ -21,7 +21,12 @@ export const LAYOUT_ROUTES: Routes = [
             .then(m => m.DashboardComponent),
         title: 'Dashboard | JobPilot'
       },
-
+      {
+        path: 'applications',
+        loadChildren: () =>
+          import('../../features/applications/application.routes')
+            .then(m => m.APPLICATION_ROUTES)
+      },
       {
         path: 'resume',
         loadChildren: () =>

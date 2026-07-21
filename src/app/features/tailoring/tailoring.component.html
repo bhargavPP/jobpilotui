@@ -1,0 +1,394 @@
+<div class="tailoring-page">
+
+  <!-- ================= LEFT PANEL ================= -->
+
+  <div class="left-panel">
+
+    <h2>Tailor Resume</h2>
+
+    <label>Company</label>
+    <input [(ngModel)]="companyName"
+           placeholder="Microsoft" />
+
+    <label>Job Title</label>
+    <input [(ngModel)]="jobTitle"
+           placeholder=".NET Developer" />
+
+    <label>Job URL</label>
+    <input [(ngModel)]="jobUrl"
+           placeholder="https://company.com/job" />
+
+    <label>Job Description</label>
+
+    <textarea rows="18"
+              [(ngModel)]="jobDescription"
+              placeholder="Paste the complete job description here...">
+    </textarea>
+
+    <button (click)="tailorResume()"
+            [disabled]="loading">
+
+      {{ loading ? 'Tailoring Resume...' : 'Tailor Resume' }}
+
+    </button>
+
+  </div>
+
+  <!-- ================= RIGHT PANEL ================= -->
+  <ng-container *ngIf="loading">
+
+    <div class="loading-card">
+
+      <div class="spinner"></div>
+
+      <h2>AI is tailoring your resume</h2>
+
+      <p>Please wait while JobPilot processes your request.</p>
+
+      <div class="loading-progress">
+
+        <div class="loading-step"
+             *ngFor="let step of loadingSteps; let i = index">
+
+          <span *ngIf="i < currentStep">✅</span>
+
+          <span *ngIf="i === currentStep">⏳</span>
+
+          <span *ngIf="i > currentStep">⚪</span>
+
+          {{ step }}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </ng-container>
+  <div class="right-panel">
+
+    <!-- Empty State -->
+
+    <ng-container *ngIf="!loading && !result">
+
+      <div class="placeholder">
+
+        <h2>AI Resume Tailoring</h2>
+
+        <p>
+          Paste a job description and click
+          <strong>Tailor Resume</strong>.
+        </p>
+
+      </div>
+
+    </ng-container>
+
+    <!-- Result -->
+
+    <ng-container *ngIf="!loading && result">
+
+      <!-- Scores -->
+
+      <div class="score-row">
+
+        <div class="score-card">
+
+          <span>Resume Match</span>
+
+          <h2>{{ result.matchScore }}%</h2>
+
+        </div>
+
+        <div class="score-card">
+
+          <span>ATS Score</span>
+
+          <h2>{{ result.atsScore.score }}</h2>
+
+        </div>
+
+      </div>
+
+      <!-- Summary -->
+
+      <section>
+
+        <h3>Professional Summary</h3>
+
+        <p>{{ result.tailoredSummary }}</p>
+
+      </section>
+
+      <!-- Experience -->
+
+      <section>
+
+        <h3>Professional Experience</h3>
+
+        <div class="experience-card"
+             *ngFor="let exp of result.experience">
+
+          <h4>{{ exp.title }}</h4>
+
+          <strong>{{ exp.company }}</strong>
+
+          <div class="date">
+
+            {{ exp.startDate }}
+
+            -
+
+            {{ exp.endDate || 'Present' }}
+
+          </div>
+
+          <ul>
+
+            <li *ngFor="let bullet of exp.bullets">
+
+              {{ bullet.text }}
+
+            </li>
+
+          </ul>
+
+        </div>
+
+      </section>
+
+      <!-- Languages -->
+
+      <section>
+
+        <h3>Languages</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let item of result.skills.languages">
+
+            {{ item }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Frameworks -->
+
+      <section>
+
+        <h3>Frameworks</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let item of result.skills.frameworks">
+
+            {{ item }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Cloud -->
+
+      <section>
+
+        <h3>Cloud</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let item of result.skills.cloud">
+
+            {{ item }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- DevOps -->
+
+      <section>
+
+        <h3>DevOps</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let item of result.skills.devOps">
+
+            {{ item }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Databases -->
+
+      <section>
+
+        <h3>Databases</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let item of result.skills.databases">
+
+            {{ item }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Required Skills -->
+
+      <section>
+
+        <h3>Required Skills</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let skill of result.extraction.requiredSkills">
+
+            {{ skill }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Nice To Have -->
+
+      <section>
+
+        <h3>Nice To Have</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let skill of result.extraction.niceToHave">
+
+            {{ skill }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Keywords -->
+
+      <section>
+
+        <h3>ATS Keywords</h3>
+
+        <div class="chips">
+
+          <span class="chip"
+                *ngFor="let keyword of result.extraction.keywords">
+
+            {{ keyword }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Seniority -->
+
+      <section>
+
+        <h3>Detected Seniority</h3>
+
+        <p>{{ result.extraction.seniority }}</p>
+
+      </section>
+
+      <!-- Missing Skills -->
+
+      <section>
+
+        <h3>Missing Skills</h3>
+
+        <div class="chips">
+
+          <span class="chip warning"
+                *ngFor="let skill of result.missingSkills">
+
+            {{ skill }}
+
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- Recommendations -->
+
+      <section>
+
+        <h3>AI Recommendations</h3>
+
+        <ul>
+
+          <li *ngFor="let rec of result.recommendations">
+
+            {{ rec }}
+
+          </li>
+
+        </ul>
+
+      </section>
+
+      <!-- Cover Letter -->
+
+      <section>
+
+        <h3>Cover Letter</h3>
+
+        <textarea rows="16"
+                  readonly
+                  [value]="result.coverLetter">
+        </textarea>
+
+      </section>
+
+      <!-- Action Buttons -->
+
+      <div class="actions">
+
+        <button type="button">
+          Download PDF
+        </button>
+
+        <button type="button">
+          Download DOCX
+        </button>
+
+        <button type="button">
+          Copy Cover Letter
+        </button>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</div>

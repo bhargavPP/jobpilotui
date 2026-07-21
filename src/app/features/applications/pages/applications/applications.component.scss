@@ -1,0 +1,23 @@
+.page {
+  padding: 24px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  text-align: left;
+}
+
+button {
+  margin-left: 8px;
+  cursor: pointer;
+}

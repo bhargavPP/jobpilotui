@@ -1,0 +1,95 @@
+<div *ngIf="loading">
+
+  Loading...
+
+</div>
+
+<div *ngIf="application" class="page">
+
+  <h2>{{application.companyName}}</h2>
+
+  <h3>{{application.jobTitle}}</h3>
+
+  <div class="scores">
+
+    <div>
+
+      <strong>Match Score</strong>
+
+      <p>{{application.matchScore}}%</p>
+
+    </div>
+
+    <div>
+
+      <strong>ATS Score</strong>
+
+      <p>{{application.atsScore}}%</p>
+
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h3>Status</h3>
+
+  <select [(ngModel)]="application.status">
+
+    <option *ngFor="let status of statuses"
+            [value]="status">
+
+      {{status}}
+
+    </option>
+
+  </select>
+
+  <button type="button"
+          (click)="saveStatus()">
+
+    Save Status
+
+  </button>
+
+  <hr>
+
+  <h3>Job Description</h3>
+
+  <pre>{{application.jobDescriptionRaw}}</pre>
+
+  <hr>
+
+  <h3>Cover Letter</h3>
+
+  <pre>{{application.coverLetter}}</pre>
+
+  <hr>
+
+  <h3>Missing Skills</h3>
+
+  <ul>
+
+    <li *ngFor="let skill of application.missingSkills">
+
+      {{skill}}
+
+    </li>
+
+  </ul>
+
+  <hr>
+
+  <h3>Recommendations</h3>
+
+  <ul>
+
+    <li *ngFor="let recommendation of application.recommendations">
+
+      {{recommendation}}
+
+    </li>
+
+  </ul>
+
+</div>
