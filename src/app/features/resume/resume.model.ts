@@ -28,7 +28,7 @@ export interface ResumeProfile {
 
   education: EducationEntry[];
 
-  skills: SkillSet;
+  skillCategories: SkillCategory[];
 
   customSections: CustomSection[];
   sections: ResumeSection[];
@@ -74,20 +74,28 @@ export interface EducationEntry {
   graduationDate: string | null;
 
 }
+export interface SkillCategory {
 
-export interface SkillSet {
+  id: string;
 
-  languages: string[];
+  name: string;
 
-  frameworks: string[];
-
-  cloud: string[];
-
-  devOps: string[];
-
-  databases: string[];
+  skills: string[];
 
 }
+// export interface SkillSet {
+
+//   languages: string[];
+
+//   frameworks: string[];
+
+//   cloud: string[];
+
+//   devOps: string[];
+
+//   databases: string[];
+
+// }
 export interface ResumeSection {
 
   id: string;

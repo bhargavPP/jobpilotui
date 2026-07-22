@@ -1,42 +1,49 @@
 <mat-card>
 
   <mat-card-header>
-
-    <mat-card-title>
-
-      Skills
-
-    </mat-card-title>
-
+    <mat-card-title>Skills</mat-card-title>
     <mat-card-subtitle>
-
-      Showcase your technical skills.
-
+      Organize your skills into categories.
     </mat-card-subtitle>
-
   </mat-card-header>
 
   <mat-card-content>
 
-    <!-- Languages -->
+    @for (category of skillCategories(); track category.id) {
 
     <section class="skill-section">
 
-      <h3>Languages</h3>
+      <div class="category-header">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+
+          <input matInput
+                 [(ngModel)]="category.name"
+                 (ngModelChange)="emitChanges()">
+        </mat-form-field>
+
+        <button mat-icon-button
+                color="warn"
+                (click)="removeCategory(category.id)">
+
+          <mat-icon>delete</mat-icon>
+
+        </button>
+
+      </div>
 
       <mat-chip-set>
 
-        @for (skill of skills().languages; track skill) {
+        @for (skill of category.skills; track skill) {
 
         <mat-chip-row removable
-                      (removed)="removeSkill('languages', skill)">
+                      (removed)="removeSkill(category.id, skill)">
 
           {{ skill }}
 
           <button matChipRemove>
-
             <mat-icon>cancel</mat-icon>
-
           </button>
 
         </mat-chip-row>
@@ -49,16 +56,16 @@
 
         <mat-form-field appearance="outline">
 
-          <mat-label>Add Language</mat-label>
+          <mat-label>Add Skill</mat-label>
 
           <input matInput
-                 [(ngModel)]="language">
+                 #skillInput>
 
         </mat-form-field>
 
         <button mat-flat-button
                 color="primary"
-                (click)="addSkill('languages', language)">
+                (click)="addSkill(category.id, skillInput.value); skillInput.value=''">
 
           Add
 
@@ -68,205 +75,17 @@
 
     </section>
 
-    <!-- Frameworks -->
+    }
 
-    <section class="skill-section">
+    <button mat-stroked-button
+            color="primary"
+            (click)="addCategory()">
 
-      <h3>Frameworks</h3>
+      <mat-icon>add</mat-icon>
 
-      <mat-chip-set>
+      Add Category
 
-        @for (skill of skills().frameworks; track skill) {
-
-        <mat-chip-row removable
-                      (removed)="removeSkill('frameworks', skill)">
-
-          {{ skill }}
-
-          <button matChipRemove>
-
-            <mat-icon>cancel</mat-icon>
-
-          </button>
-
-        </mat-chip-row>
-
-        }
-
-      </mat-chip-set>
-
-      <div class="add-row">
-
-        <mat-form-field appearance="outline">
-
-          <mat-label>Add Framework</mat-label>
-
-          <input matInput
-                 [(ngModel)]="framework">
-
-        </mat-form-field>
-
-        <button mat-flat-button
-                color="primary"
-                (click)="addSkill('frameworks', framework)">
-
-          Add
-
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- Cloud -->
-
-    <section class="skill-section">
-
-      <h3>Cloud</h3>
-
-      <mat-chip-set>
-
-        @for (skill of skills().cloud; track skill) {
-
-        <mat-chip-row removable
-                      (removed)="removeSkill('cloud', skill)">
-
-          {{ skill }}
-
-          <button matChipRemove>
-
-            <mat-icon>cancel</mat-icon>
-
-          </button>
-
-        </mat-chip-row>
-
-        }
-
-      </mat-chip-set>
-
-      <div class="add-row">
-
-        <mat-form-field appearance="outline">
-
-          <mat-label>Add Cloud Skill</mat-label>
-
-          <input matInput
-                 [(ngModel)]="cloud">
-
-        </mat-form-field>
-
-        <button mat-flat-button
-                color="primary"
-                (click)="addSkill('cloud', cloud)">
-
-          Add
-
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- DevOps -->
-
-    <section class="skill-section">
-
-      <h3>DevOps</h3>
-
-      <mat-chip-set>
-
-        @for (skill of skills().devOps; track skill) {
-
-        <mat-chip-row removable
-                      (removed)="removeSkill('devOps', skill)">
-
-          {{ skill }}
-
-          <button matChipRemove>
-
-            <mat-icon>cancel</mat-icon>
-
-          </button>
-
-        </mat-chip-row>
-
-        }
-
-      </mat-chip-set>
-
-      <div class="add-row">
-
-        <mat-form-field appearance="outline">
-
-          <mat-label>Add DevOps Skill</mat-label>
-
-          <input matInput
-                 [(ngModel)]="devOps">
-
-        </mat-form-field>
-
-        <button mat-flat-button
-                color="primary"
-                (click)="addSkill('devOps', devOps)">
-
-          Add
-
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- Databases -->
-
-    <section class="skill-section">
-
-      <h3>Databases</h3>
-
-      <mat-chip-set>
-
-        @for (skill of skills().databases; track skill) {
-
-        <mat-chip-row removable
-                      (removed)="removeSkill('databases', skill)">
-
-          {{ skill }}
-
-          <button matChipRemove>
-
-            <mat-icon>cancel</mat-icon>
-
-          </button>
-
-        </mat-chip-row>
-
-        }
-
-      </mat-chip-set>
-
-      <div class="add-row">
-
-        <mat-form-field appearance="outline">
-
-          <mat-label>Add Database</mat-label>
-
-          <input matInput
-                 [(ngModel)]="database">
-
-        </mat-form-field>
-
-        <button mat-flat-button
-                color="primary"
-                (click)="addSkill('databases', database)">
-
-          Add
-
-        </button>
-
-      </div>
-
-    </section>
+    </button>
 
   </mat-card-content>
 

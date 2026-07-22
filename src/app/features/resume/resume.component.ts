@@ -31,7 +31,7 @@ import { EducationListComponent } from './components/Education/education-list/ed
 
 import { EducationDialogComponent } from './components/Education/education-dialog/education-dialog.component';
 import { SkillsEditorComponent } from './components/skills-editor/skills-editor.component';
-import { SkillSet } from './resume.model';
+import { SkillCategory } from './resume.model';
 
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -154,7 +154,7 @@ export class ResumeComponent {
 
       education: resume.education,
 
-      skills: resume.skills,
+      skillCategories: resume.skillCategories,
       customSections: resume.customSections
 
     };
@@ -235,7 +235,7 @@ export class ResumeComponent {
 
         education: resume.education,
 
-        skills: resume.skills,
+        skillCategories: resume.skillCategories,
 
         customSections: resume.customSections
 
@@ -449,7 +449,7 @@ export class ResumeComponent {
 
   }
 
-  saveSkills(skills: SkillSet): void {
+  saveSkills(skillCategories: SkillCategory[]): void {
 
     this.resume.update(current => {
 
@@ -463,7 +463,7 @@ export class ResumeComponent {
 
         ...current,
 
-        skills
+        skillCategories
 
       };
 

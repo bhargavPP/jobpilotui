@@ -3,7 +3,7 @@
 import {
   PersonalInfo,
   EducationEntry,
-  SkillSet,
+  SkillCategory,
   CustomSection,
 } from './resume.model';
 
@@ -16,8 +16,7 @@ export interface ResumeUpsertRequest {
   experience: ExperienceEntryDto[];
 
   education: EducationEntry[];
-
-  skills: SkillSet;
+  skillCategories: SkillCategory[];
 
   customSections: CustomSection[];
 

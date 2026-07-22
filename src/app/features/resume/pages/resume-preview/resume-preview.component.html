@@ -64,15 +64,15 @@
 
       @if (resume()?.contact?.linkedIn) {
       <a [href]="resume()!.contact.linkedIn"
-         target="_blank"  rel="noopener noreferrer">
+         target="_blank" rel="noopener noreferrer">
         LinkedIn
       </a>
       }
-    
+
       @if (resume()?.contact?.gitHub) {
       <span>•</span>
       <a [href]="resume()!.contact.gitHub"
-         target="_blank"  rel="noopener noreferrer">
+         target="_blank" rel="noopener noreferrer">
         GitHub
       </a>
       }
@@ -80,7 +80,7 @@
       @if (resume()?.contact?.portfolio) {
       <span>•</span>
       <a [href]="resume()!.contact.portfolio"
-         target="_blank"  rel="noopener noreferrer">
+         target="_blank" rel="noopener noreferrer">
         Portfolio
       </a>
       }
@@ -177,70 +177,28 @@
 
   </section>
 
-  <!-- Technical Skills -->
+  <!-- Skills -->
   @if (hasSkills()) {
 
   <mat-divider></mat-divider>
 
   <section>
 
-    <h2>Technical Skills</h2>
+    <h2>Skills</h2>
 
-    <div class="skills-grid">
+    <div class="skills-list">
 
-      @if (resume()?.skills?.languages?.length) {
-      <div>
-        <h3>Languages</h3>
-        <ul>
-          @for (skill of resume()!.skills.languages; track skill) {
-          <li>{{ skill }}</li>
-          }
-        </ul>
-      </div>
+      @for (category of resume()?.skillCategories; track category.id) {
+
+      @if (category.skills.length) {
+
+      <p class="skill-row">
+        <strong>{{ category.name }}:</strong>
+        {{ category.skills.join(', ') }}
+      </p>
+
       }
 
-      @if (resume()?.skills?.frameworks?.length) {
-      <div>
-        <h3>Frameworks</h3>
-        <ul>
-          @for (skill of resume()!.skills.frameworks; track skill) {
-          <li>{{ skill }}</li>
-          }
-        </ul>
-      </div>
-      }
-
-      @if (resume()?.skills?.cloud?.length) {
-      <div>
-        <h3>Cloud</h3>
-        <ul>
-          @for (skill of resume()!.skills.cloud; track skill) {
-          <li>{{ skill }}</li>
-          }
-        </ul>
-      </div>
-      }
-
-      @if (resume()?.skills?.devOps?.length) {
-      <div>
-        <h3>DevOps</h3>
-        <ul>
-          @for (skill of resume()!.skills.devOps; track skill) {
-          <li>{{ skill }}</li>
-          }
-        </ul>
-      </div>
-      }
-
-      @if (resume()?.skills?.databases?.length) {
-      <div>
-        <h3>Databases</h3>
-        <ul>
-          @for (skill of resume()!.skills.databases; track skill) {
-          <li>{{ skill }}</li>
-          }
-        </ul>
-      </div>
       }
 
     </div>

@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-
 import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { SkillSet } from '../../resume.model';
+import { SkillCategory } from '../../resume.model';
 
 @Component({
   selector: 'app-skills-editor',
@@ -37,20 +36,33 @@ import { SkillSet } from '../../resume.model';
 })
 export class SkillsEditorComponent {
 
-  readonly skills = input.required<SkillSet>();
+  readonly skillCategories = input.required<SkillCategory[]>();
 
-  readonly save = output<SkillSet>();
+  readonly save = output<SkillCategory[]>();
 
-  language = '';
-  framework = '';
-  cloud = '';
-  devOps = '';
-  database = '';
+  addCategory(): void {
 
-  addSkill(
-    category: keyof SkillSet,
-    value: string
-  ): void {
+    const updated = structuredClone(this.skillCategories());
+
+    updated.push({
+      id: crypto.randomUUID(),
+      name: '',
+      skills: []
+    });
+
+    this.save.emit(updated);
+
+  }
+
+  removeCategory(id: string): void {
+
+    const updated = this.skillCategories().filter(c => c.id !== id);
+
+    this.save.emit(updated);
+
+  }
+
+  addSkill(categoryId: string, value: string): void {
 
     value = value.trim();
 
@@ -58,55 +70,39 @@ export class SkillsEditorComponent {
       return;
     }
 
-    const updated: SkillSet = structuredClone(this.skills());
+    const updated = structuredClone(this.skillCategories());
 
-    updated[category].push(value);
+    const category = updated.find(c => c.id === categoryId);
 
-    this.save.emit(updated);
-
-    this.clear(category);
-
-  }
-
-  removeSkill(
-    category: keyof SkillSet,
-    value: string
-  ): void {
-
-    const updated: SkillSet = structuredClone(this.skills());
-
-    updated[category] =
-      updated[category].filter(x => x !== value);
-
-    this.save.emit(updated);
-
-  }
-
-  private clear(category: keyof SkillSet): void {
-
-    switch (category) {
-
-      case 'languages':
-        this.language = '';
-        break;
-
-      case 'frameworks':
-        this.framework = '';
-        break;
-
-      case 'cloud':
-        this.cloud = '';
-        break;
-
-      case 'devOps':
-        this.devOps = '';
-        break;
-
-      case 'databases':
-        this.database = '';
-        break;
-
+    if (!category) {
+      return;
     }
+
+    category.skills.push(value);
+
+    this.save.emit(updated);
+
+  }
+
+  removeSkill(categoryId: string, value: string): void {
+
+    const updated = structuredClone(this.skillCategories());
+
+    const category = updated.find(c => c.id === categoryId);
+
+    if (!category) {
+      return;
+    }
+
+    category.skills = category.skills.filter(s => s !== value);
+
+    this.save.emit(updated);
+
+  }
+
+  emitChanges(): void {
+
+    this.save.emit(structuredClone(this.skillCategories()));
 
   }
 

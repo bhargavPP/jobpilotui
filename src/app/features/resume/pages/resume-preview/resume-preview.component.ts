@@ -97,18 +97,16 @@ export class ResumePreviewComponent implements OnInit {
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   }
   hasSkills(): boolean {
-    const skills = this.resume()?.skills;
 
-    if (!skills) {
+    const skillCategories = this.resume()?.skillCategories;
+
+    if (!skillCategories) {
       return false;
     }
 
-    return [
-      skills.languages,
-      skills.frameworks,
-      skills.cloud,
-      skills.devOps,
-      skills.databases
-    ].some(s => s?.length > 0);
+    return skillCategories.some(
+      category => category.skills.length > 0
+    );
+
   }
 }

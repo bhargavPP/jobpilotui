@@ -169,3 +169,18 @@
     color: #666;
   }
 }
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-row {
+  margin: 0;
+  line-height: 1.6;
+}
+
+  .skill-row strong {
+    font-weight: 600;
+    margin-right: 6px;
+  }

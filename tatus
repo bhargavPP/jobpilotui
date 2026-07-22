@@ -1,0 +1,53 @@
+[33mcommit d1724a21a4631d8c298c89cbf5259680f6672f18[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Wed Jul 22 18:19:11 2026 -0400
+
+    changes for contact info update
+
+[33mcommit efcfef286a1f73b1e23ca2f50f2eee7ec62b0773[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Tue Jul 21 16:36:57 2026 -0400
+
+     added resume tailoring options
+
+[33mcommit 3d39abbed35f974d43cb9077d28171f6b3dcdd7f[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Mon Jul 20 20:52:15 2026 -0400
+
+    added tailoring component
+
+[33mcommit 3dba4c269cb84f0a976756ee838f5e7ea5cc913d[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Sun Jul 19 20:25:10 2026 -0400
+
+    Added Dockerfile
+
+[33mcommit 94afc8f86e651e8d8e8b3cdab0043430a89f0549[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Sat Jul 18 15:42:17 2026 -0400
+
+    added delete option and customer section for skills
+
+[33mcommit 125abb84410d9c7bfb839dd9a2f50290b8ee4e4a[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Fri Jul 17 19:43:50 2026 -0400
+
+    Added Resume Preview for resume
+
+[33mcommit 1e12bbb3aedc2fa8ba7f83dc84424d4bf395e1f2[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Thu Jul 16 11:11:18 2026 -0400
+
+    added Resume Upload UI with displayed summary of uploaded resume.
+
+[33mcommit 50960c89174f8bea8f35906f3d386e5366e5e125[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Tue Jul 14 16:18:12 2026 -0400
+
+    added some backend and front UI for Job Pilot application
+
+[33mcommit 63a18322726bd0895a16f7aab28023e6ca7f2097[m
+Author: Bhargav <bhargavpatel4319@gmail.com>
+Date:   Tue Jul 14 14:01:42 2026 -0400
+
+    initial commit
