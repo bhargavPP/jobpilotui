@@ -1,11 +1,15 @@
 // src/app/features/resume/models/resume-upsert-request.model.ts
 
 import {
+  PersonalInfo,
   EducationEntry,
-  SkillSet
+  SkillSet,
+  CustomSection,
 } from './resume.model';
 
 export interface ResumeUpsertRequest {
+
+  contact: PersonalInfo;
 
   summary: string;
 
@@ -14,6 +18,8 @@ export interface ResumeUpsertRequest {
   education: EducationEntry[];
 
   skills: SkillSet;
+
+  customSections: CustomSection[];
 
 }
 

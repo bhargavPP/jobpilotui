@@ -14,15 +14,28 @@ export class TailoringService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = `${environment.apiUrl}/tailor`;
+  private readonly tailorUrl =
+    `${environment.apiUrl}/tailor`;
+
+  private readonly applicationsUrl =
+    `${environment.apiUrl}/applications`;
 
   tailorResume(
     request: TailorResumeRequest
   ): Observable<TailoredResumeResult> {
 
     return this.http.post<TailoredResumeResult>(
-      this.apiUrl,
+      this.tailorUrl,
       request
     );
+  }
+
+  downloadResume(applicationId: string) {
+
+    return this.http.get(
+      `${this.applicationsUrl}/${applicationId}/resume`,
+      {
+        responseType: 'blob'
+      });
   }
 }

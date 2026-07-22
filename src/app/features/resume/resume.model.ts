@@ -11,7 +11,7 @@ export interface PersonalInfo {
 
   linkedIn?: string;
 
-  github?: string;
+  gitHub?: string;
 
   portfolio?: string;
 
@@ -21,7 +21,7 @@ export interface ResumeProfile {
   id: string;
 
   userId: string;
-
+  contact: PersonalInfo; 
   summary: string;
 
   experience: ExperienceEntry[];

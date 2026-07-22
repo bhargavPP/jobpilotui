@@ -1,0 +1,58 @@
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>Contact Information</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="contact-grid">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input matInput [(ngModel)]="contact().fullName">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput
+               type="email"
+               [(ngModel)]="contact().email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput
+               type="tel"
+               [(ngModel)]="contact().phone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput
+               [(ngModel)]="contact().location">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>LinkedIn</mat-label>
+        <input matInput
+               [(ngModel)]="contact().linkedIn">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>GitHub</mat-label>
+        <input matInput
+               [(ngModel)]="contact().gitHub">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Portfolio</mat-label>
+        <input matInput
+               [(ngModel)]="contact().portfolio">
+      </mat-form-field>
+
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

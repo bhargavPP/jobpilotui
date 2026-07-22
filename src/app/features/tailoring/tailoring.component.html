@@ -170,7 +170,17 @@
       <app-cover-letter-card [coverLetter]="resume.coverLetter">
 
       </app-cover-letter-card>
+      <div class="actions">
 
+        <button mat-raised-button
+                color="primary"
+                (click)="downloadResume()">
+
+          Download Resume
+
+        </button>
+
+      </div>
     </div>
 
   </section>

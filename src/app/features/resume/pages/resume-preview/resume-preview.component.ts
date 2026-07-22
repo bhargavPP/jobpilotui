@@ -45,7 +45,7 @@ export class ResumePreviewComponent implements OnInit {
   readonly error = signal('');
 
   ngOnInit(): void {
-    console.log('Preview loaded');
+    
     this.resumeService.getResume().subscribe({
 
       next: resume => {

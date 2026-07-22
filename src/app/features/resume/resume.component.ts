@@ -38,6 +38,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
+
+import { ContactEditorComponent } from './components/contact-editor/contact-editor.component';
 @Component({
   selector: 'app-resume',
 
@@ -57,7 +59,8 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
     SummaryEditorComponent,
     ExperienceListComponent,
     EducationListComponent,
-    SkillsEditorComponent
+    SkillsEditorComponent,
+    ContactEditorComponent
   ],
 
   templateUrl: './resume.component.html',
@@ -97,7 +100,8 @@ export class ResumeComponent {
       .subscribe({
 
         next: resume => {
-
+          console.log('Resume received:', resume);
+         
           this.resume.set(resume);
 
           this.loading.set(false);
@@ -142,13 +146,16 @@ export class ResumeComponent {
 
     const request: ResumeUpsertRequest = {
 
+      contact: resume.contact,
+
       summary,
 
       experience: resume.experience,
 
       education: resume.education,
 
-      skills: resume.skills
+      skills: resume.skills,
+      customSections: resume.customSections
 
     };
 
@@ -220,13 +227,17 @@ export class ResumeComponent {
     this.resumeService
       .updateResume({
 
+        contact: resume.contact,
+
         summary: resume.summary,
 
         experience: resume.experience,
 
         education: resume.education,
 
-        skills: resume.skills
+        skills: resume.skills,
+
+        customSections: resume.customSections
 
       })
       .subscribe({

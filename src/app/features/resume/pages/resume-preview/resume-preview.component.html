@@ -34,9 +34,64 @@
 
 <section class="resume">
 
-  <header>
-    <h1>Professional Resume</h1>
+  <header class="resume-header">
+
+    <h1>{{ resume()?.contact?.fullName || 'Professional Resume' }}</h1>
+
+    <div class="contact-info">
+
+      @if (resume()?.contact?.location) {
+      <span>{{ resume()?.contact?.location }}</span>
+      }
+
+      @if (resume()?.contact?.phone) {
+      <span>• {{ resume()?.contact?.phone }}</span>
+      }
+
+      @if (resume()?.contact?.email) {
+      <span>• {{ resume()?.contact?.email }}</span>
+      }
+
+    </div>
+
+    @if (
+    resume()?.contact?.linkedIn ||
+    resume()?.contact?.gitHub ||
+    resume()?.contact?.portfolio
+    ) {
+
+    <div class="contact-links">
+
+      @if (resume()?.contact?.linkedIn) {
+      <a [href]="resume()!.contact.linkedIn"
+         target="_blank"  rel="noopener noreferrer">
+        LinkedIn
+      </a>
+      }
+    
+      @if (resume()?.contact?.gitHub) {
+      <span>•</span>
+      <a [href]="resume()!.contact.gitHub"
+         target="_blank"  rel="noopener noreferrer">
+        GitHub
+      </a>
+      }
+
+      @if (resume()?.contact?.portfolio) {
+      <span>•</span>
+      <a [href]="resume()!.contact.portfolio"
+         target="_blank"  rel="noopener noreferrer">
+        Portfolio
+      </a>
+      }
+
+    </div>
+
+    }
+
   </header>
+
+  <mat-divider></mat-divider>
 
   <mat-divider></mat-divider>
 
