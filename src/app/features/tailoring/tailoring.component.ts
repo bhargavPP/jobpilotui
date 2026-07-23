@@ -15,6 +15,9 @@ import { RecommendationsCardComponent } from './components/recommendations-card/
 import { CoverLetterCardComponent } from './components/cover-letter-card/cover-letter-card.component';
 
 import { saveAs } from 'file-saver';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-tailoring',
   standalone: true,
@@ -27,7 +30,9 @@ import { saveAs } from 'file-saver';
     ResumePreviewComponent,
     SkillsCardComponent,
     RecommendationsCardComponent,
-    CoverLetterCardComponent
+    CoverLetterCardComponent,
+    MatButtonModule,
+    MatIconModule
     
   ],
   templateUrl: './tailoring.component.html',

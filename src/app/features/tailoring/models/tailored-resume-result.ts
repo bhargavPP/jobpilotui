@@ -1,5 +1,5 @@
 import { ExperienceEntryDto } from './experience-entry';
-import { SkillSet } from './skill-set';
+import { SkillCategory } from './skill-set';
 import { AtsScoreResult } from './ats-score';
 import { JdExtraction } from './jd-extraction';
 
@@ -17,7 +17,7 @@ export interface TailoredResumeResult {
 
   experience: ExperienceEntryDto[];
 
-  skills: SkillSet;
+  skillCategories: SkillCategory[];
 
   extraction: JdExtraction;
 

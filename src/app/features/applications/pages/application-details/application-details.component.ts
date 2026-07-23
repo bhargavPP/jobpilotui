@@ -5,6 +5,15 @@ import { FormsModule } from '@angular/forms';
 
 import { ApplicationService } from '../../services/application.service';
 import { ApplicationDetails } from '../../models/application.models';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-application-details',
@@ -37,7 +46,7 @@ export class ApplicationDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     const id = this.route.snapshot.paramMap.get('id');
-
+    console.log('Application Id:', id);
     if (!id)
       return;
 

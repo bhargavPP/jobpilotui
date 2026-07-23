@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SkillSet } from '../../models/skill-set';
+import { SkillCategory } from '../../models/skill-set';
 
 @Component({
   selector: 'app-skills-card',
@@ -13,7 +13,7 @@ import { SkillSet } from '../../models/skill-set';
 export class SkillsCardComponent {
 
   @Input({ required: true })
-  skills!: SkillSet;
+  skillCategories: SkillCategory[] = [];
 
   @Input()
   requiredSkills: string[] = [];

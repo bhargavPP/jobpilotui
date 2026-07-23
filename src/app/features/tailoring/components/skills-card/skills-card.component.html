@@ -1,89 +1,26 @@
-<div class="card" >
+<div class="card">
 
-  <h2>Technical Skills</h2>
+  <h2>Skills</h2>
 
-  <div class="section">
+  <div class="section"
+       *ngFor="let category of skillCategories">
 
-    <h3>Languages</h3>
+    <ng-container *ngIf="category.skills.length">
 
-    <div class="chips">
+      <h3>{{ category.name }}</h3>
 
-      <span class="chip"
-            *ngFor="let skill of skills.languages">
+      <div class="chips">
 
-        {{ skill }}
+        <span class="chip"
+              *ngFor="let skill of category.skills">
 
-      </span>
+          {{ skill }}
 
-    </div>
+        </span>
 
-  </div>
+      </div>
 
-  <div class="section">
-
-    <h3>Frameworks</h3>
-
-    <div class="chips">
-
-      <span class="chip"
-            *ngFor="let skill of skills.frameworks">
-
-        {{ skill }}
-
-      </span>
-
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <h3>Cloud</h3>
-
-    <div class="chips">
-
-      <span class="chip"
-            *ngFor="let skill of skills.cloud">
-
-        {{ skill }}
-
-      </span>
-
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <h3>DevOps</h3>
-
-    <div class="chips">
-
-      <span class="chip"
-            *ngFor="let skill of skills.devOps">
-
-        {{ skill }}
-
-      </span>
-
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <h3>Databases</h3>
-
-    <div class="chips">
-
-      <span class="chip"
-            *ngFor="let skill of skills.databases">
-
-        {{ skill }}
-
-      </span>
-
-    </div>
+    </ng-container>
 
   </div>
 

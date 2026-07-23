@@ -1,46 +1,107 @@
 <div class="page">
 
   <div class="page-header">
-    <h2>Applications</h2>
-    <span class="count" *ngIf="!loading">
-      {{ applications.length }} application{{ applications.length !== 1 ? 's' : '' }}
-    </span>
-  </div>
 
+    <div>
+      <h2>Applications</h2>
+
+      <p class="subtitle">
+        Track your tailored resumes and job applications.
+      </p>
+    </div>
+
+    <span class="count" *ngIf="!loading">
+      {{ applications.length }}
+      application{{ applications.length !== 1 ? 's' : '' }}
+    </span>
+
+  </div>
   <div *ngIf="loading" class="loading-state">
     Loading applications...
   </div>
 
-  <div *ngIf="!loading && applications.length === 0" class="empty-state">
+  <div *ngIf="!loading && applications.length === 0"
+       class="empty-state">
+
     <h3>No applications yet</h3>
+
     <p>
-      Tailor a resume for a job and it will appear here.
+      Tailor your first resume and it will automatically appear here.
     </p>
+
   </div>
 
-  <table class="table"
-         *ngIf="!loading && applications.length > 0">
+  <div class="application-list"
+       *ngIf="!loading && applications.length">
 
-    <thead>
-      <tr>
-        <th>Company</th>
-        <th>Position</th>
-        <th>Match</th>
-        <th>Status</th>
-        <th>Applied</th>
-      </tr>
-    </thead>
+    <div class="application-card" *ngFor="let app of applications">
 
-    <tbody>
-      <tr *ngFor="let app of applications">
-        <td>{{ app.companyName }}</td>
-        <td>{{ app.jobTitle }}</td>
-        <td>{{ app.matchScore }}%</td>
-        <td>{{ app.status }}</td>
-        <td>{{ app.createdAt | date:'mediumDate' }}</td>
-      </tr>
-    </tbody>
+      <div class="card-top">
 
-  </table>
+        <div>
+
+          <h3>{{ app.jobTitle }}</h3>
+
+          <p class="company">
+            {{ app.companyName }}
+          </p>
+
+        </div>
+
+        <span class="status-badge"
+              [ngClass]="getStatusClass(app.status)">
+
+          {{ getStatusText(app.status) }}
+
+        </span>
+
+      </div>
+
+      <div class="match-row">
+
+        <span>Resume Match</span>
+
+        <strong>{{ app.matchScore }}%</strong>
+
+      </div>
+
+      <div class="progress">
+
+        <div class="progress-fill"
+             [style.width.%]="app.matchScore">
+
+        </div>
+
+      </div>
+
+      <div class="meta">
+
+        <span>
+          📅 {{ app.createdAt | date:'mediumDate' }}
+        </span>
+
+      </div>
+
+      <div class="actions">
+
+        <button class="btn btn-primary"
+                [routerLink]="['/applications', app.id]">
+
+          <span>View Details</span>
+
+        </button>
+
+        <button class="btn btn-danger"
+                (click)="delete(app.id)">
+
+          <span>Delete</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

@@ -151,12 +151,11 @@
 
       <!-- Skills -->
 
-      <app-skills-card [skills]="resume.skills"
+      <app-skills-card [skillCategories]="resume.skillCategories"
                        [requiredSkills]="resume.extraction.requiredSkills"
                        [niceToHave]="resume.extraction.niceToHave"
                        [keywords]="resume.extraction.keywords"
                        [missingSkills]="resume.missingSkills">
-
       </app-skills-card>
 
       <!-- Recommendations -->
@@ -172,11 +171,20 @@
       </app-cover-letter-card>
       <div class="actions">
 
+        <h3>Your tailored resume is ready</h3>
+
+        <p>
+          Download your AI-tailored resume in Microsoft Word format.
+        </p>
+
         <button mat-raised-button
                 color="primary"
+                class="download-btn"
                 (click)="downloadResume()">
 
-          Download Resume
+          <mat-icon>download</mat-icon>
+
+          Download Resume (.docx)
 
         </button>
 

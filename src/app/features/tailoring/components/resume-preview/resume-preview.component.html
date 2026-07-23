@@ -57,32 +57,16 @@
 
       <h3>Technical Skills</h3>
 
-      <div class="skills-grid">
+      <div class="skills-section" *ngIf="resume.skillCategories?.length">
 
-        <div *ngIf="resume.skills.languages?.length">
-          <strong>Languages</strong>
-          <p>{{ resume.skills.languages.join(', ') }}</p>
-        </div>
+        <h3>Skills</h3>
 
-        <div *ngIf="resume.skills.frameworks?.length">
-          <strong>Frameworks</strong>
-          <p>{{ resume.skills.frameworks.join(', ') }}</p>
-        </div>
+        <p *ngFor="let category of resume.skillCategories">
 
-        <div *ngIf="resume.skills.cloud?.length">
-          <strong>Cloud</strong>
-          <p>{{ resume.skills.cloud.join(', ') }}</p>
-        </div>
+          <strong>{{ category.name }}:</strong>
+          {{ category.skills.join(', ') }}
 
-        <div *ngIf="resume.skills.devOps?.length">
-          <strong>DevOps</strong>
-          <p>{{ resume.skills.devOps.join(', ') }}</p>
-        </div>
-
-        <div *ngIf="resume.skills.databases?.length">
-          <strong>Databases</strong>
-          <p>{{ resume.skills.databases.join(', ') }}</p>
-        </div>
+        </p>
 
       </div>
 

@@ -1,95 +1,164 @@
-<div *ngIf="loading">
+<div *ngIf="loading" class="loading">
 
-  Loading...
+  Loading application...
 
 </div>
 
 <div *ngIf="application" class="page">
 
-  <h2>{{application.companyName}}</h2>
+  <button mat-button
+          routerLink="/applications">
 
-  <h3>{{application.jobTitle}}</h3>
+    <mat-icon>arrow_back</mat-icon>
 
-  <div class="scores">
-
-    <div>
-
-      <strong>Match Score</strong>
-
-      <p>{{application.matchScore}}%</p>
-
-    </div>
-
-    <div>
-
-      <strong>ATS Score</strong>
-
-      <p>{{application.atsScore}}%</p>
-
-    </div>
-
-  </div>
-
-  <hr>
-
-  <h3>Status</h3>
-
-  <select [(ngModel)]="application.status">
-
-    <option *ngFor="let status of statuses"
-            [value]="status">
-
-      {{status}}
-
-    </option>
-
-  </select>
-
-  <button type="button"
-          (click)="saveStatus()">
-
-    Save Status
+    Back to Applications
 
   </button>
 
-  <hr>
+  <div class="header">
 
-  <h3>Job Description</h3>
+    <div>
 
-  <pre>{{application.jobDescriptionRaw}}</pre>
+      <h1>{{application.jobTitle}}</h1>
 
-  <hr>
+      <h3>{{application.companyName}}</h3>
 
-  <h3>Cover Letter</h3>
+    </div>
 
-  <pre>{{application.coverLetter}}</pre>
+    <span class="status-badge"
+          [ngClass]="getStatusClass(application.status)">
 
-  <hr>
+      {{application.status}}
 
-  <h3>Missing Skills</h3>
+    </span>
 
-  <ul>
+  </div>
 
-    <li *ngFor="let skill of application.missingSkills">
+  <div class="score-grid">
 
-      {{skill}}
+    <mat-card>
 
-    </li>
+      <h3>Resume Match</h3>
 
-  </ul>
+      <div class="score">
 
-  <hr>
+        {{application.matchScore}}%
 
-  <h3>Recommendations</h3>
+      </div>
 
-  <ul>
+    </mat-card>
 
-    <li *ngFor="let recommendation of application.recommendations">
+    <mat-card>
 
-      {{recommendation}}
+      <h3>ATS Score</h3>
 
-    </li>
+      <div class="score">
 
-  </ul>
+        {{application.atsScore}}%
+
+      </div>
+
+    </mat-card>
+
+  </div>
+
+  <mat-card>
+
+    <h2>Application Status</h2>
+
+    <div class="status-row">
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>Status</mat-label>
+
+        <mat-select [(value)]="application.status">
+
+          <mat-option *ngFor="let status of statuses"
+                      [value]="status">
+
+            {{status}}
+
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+      <button mat-flat-button
+              color="primary"
+              (click)="saveStatus()">
+
+        Save Changes
+
+      </button>
+
+    </div>
+
+  </mat-card>
+
+  <mat-card>
+
+    <h2>Missing Skills</h2>
+
+    <mat-chip-set>
+
+      <mat-chip *ngFor="let skill of application.missingSkills">
+
+        {{skill}}
+
+      </mat-chip>
+
+    </mat-chip-set>
+
+  </mat-card>
+
+  <mat-card>
+
+    <h2>AI Recommendations</h2>
+
+    <ul>
+
+      <li *ngFor="let recommendation of application.recommendations">
+
+        {{recommendation}}
+
+      </li>
+
+    </ul>
+
+  </mat-card>
+
+  <mat-card>
+
+    <h2>Cover Letter</h2>
+
+    <div class="cover-letter">
+
+      {{application.coverLetter}}
+
+    </div>
+
+  </mat-card>
+
+  <mat-expansion-panel>
+
+    <mat-expansion-panel-header>
+
+      <mat-panel-title>
+
+        Job Description
+
+      </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+    <pre>
+
+{{application.jobDescriptionRaw}}
+
+        </pre>
+
+  </mat-expansion-panel>
 
 </div>

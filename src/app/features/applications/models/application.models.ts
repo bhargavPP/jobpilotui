@@ -32,3 +32,4 @@ export interface ApplicationDetails {
 export interface UpdateApplicationStatusRequest {
   status: string;
 }
+ 
